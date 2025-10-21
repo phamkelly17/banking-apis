@@ -55,10 +55,10 @@ public class AccountService {
         accountFrom.setBalance(accountFromNewBalance);
         accountTo.setBalance(accountTo.getBalance() + request.getAmount());
 
-        Transaction transactionFrom = new Transaction(accountFrom, request.getAccountToId(), TransactionType.WITHDRAWL, request.getAmount(), accountFrom.getBalance());
+        Transaction transactionFrom = new Transaction(accountFrom, accountTo, TransactionType.WITHDRAWL, request.getAmount(), accountFrom.getBalance());
         accountFrom.getTransactions().add(transactionFrom);
 
-        Transaction transactionTo = new Transaction(accountFrom, request.getAccountToId(), TransactionType.DEPOSIT, request.getAmount(), accountTo.getBalance());
+        Transaction transactionTo = new Transaction(accountFrom, accountTo, TransactionType.DEPOSIT, request.getAmount(), accountTo.getBalance());
         accountTo.getTransactions().add(transactionTo);
 
         return toTransactionResponse(transactionFrom);

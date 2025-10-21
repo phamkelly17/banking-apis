@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 @Data
 public class TransactionResponse {
     @NotNull
-    private TransactionType transactionType;
+    private TransactionType transactionType; // enum of WITHDRAWL or DEPOSIT
     @NotNull
     private String from;
     @NotNull
