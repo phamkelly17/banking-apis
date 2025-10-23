@@ -1,12 +1,12 @@
 package com.example.brainridge.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import jakarta.validation.constraints.NotNull;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class TransactionHistoryRequest {
     @NotNull

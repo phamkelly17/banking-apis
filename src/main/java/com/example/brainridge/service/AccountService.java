@@ -6,6 +6,7 @@ import com.example.brainridge.model.Transaction;
 import com.example.brainridge.model.TransactionType;
 import com.example.brainridge.repository.AccountRepository;
 import org.springframework.stereotype.Service;
+import java.util.Collections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,9 @@ public class AccountService {
     }
 
     public List<TransactionResponse> getTransactionHistory(TransactionHistoryRequest request){
-        List<Transaction> transactions = repository.getTransactionHistory(request.getAccountId());
+        List<Transaction> transactions = new ArrayList<>(repository.getTransactionHistory(request.getAccountId()));
+        Collections.reverse(transactions);
+
         int page = request.getPage();
         int pageSize = request.getPageSize();
         int startIndex = (page - 1) * pageSize;
